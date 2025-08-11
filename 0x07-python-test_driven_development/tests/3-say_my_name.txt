@@ -1,0 +1,59 @@
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+# Basic usage with both names
+>>> say_my_name("John", "Smith")
+My name is John Smith
+
+# Basic usage with default last name
+>>> say_my_name("Bob")
+My name is Bob 
+
+# Both names with spaces or special characters
+>>> say_my_name("Walter", "White")
+My name is Walter White
+
+# Empty first name (should raise error)
+>>> say_my_name("", "Smith")
+My name is  Smith
+
+# Empty last name (should work, as default is "")
+>>> say_my_name("Alice", "")
+My name is Alice 
+
+# First name as non-string (int)
+>>> say_my_name(12, "White")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+# Last name as non-string (list)
+>>> say_my_name("John", [1, 2])
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+# First name as None
+>>> say_my_name(None, "Smith")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+# Last name as None
+>>> say_my_name("John", None)
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+# Both non-strings
+>>> say_my_name(89, 98)
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+# Float as first name (not string)
+>>> say_my_name(3.14, "Pi")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+# Output has a trailing space if last name is empty
+>>> say_my_name("Trailing", "")
+My name is Trailing 
+
+# Long names
+>>> say_my_name("VeryLongFirstName", "VeryLongLastName")
+My name is VeryLongFirstName VeryLongLastName
