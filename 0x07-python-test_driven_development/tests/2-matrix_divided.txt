@@ -1,0 +1,66 @@
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+# Basic division
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], 3)
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+# Float division
+>>> matrix_divided([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]], 2.0)
+[[0.5, 1.0, 1.5], [2.0, 2.5, 3.0]]
+
+# Empty matrix
+>>> matrix_divided([], 3)
+[]
+
+# Matrix with empty rows
+>>> matrix_divided([[], []], 3)
+[[], []]
+
+# Single element
+>>> matrix_divided([[10]], 2)
+[[5.0]]
+
+# Negative numbers
+>>> matrix_divided([[ -2, -4 ]], -2)
+[[1.0, 2.0]]
+
+# Mixed int/float
+>>> matrix_divided([[1, 2.5], [3, 4]], 2)
+[[0.5, 1.25], [1.5, 2.0]]
+
+# Div by float
+>>> matrix_divided([[1, 2]], 0.5)
+[[2.0, 4.0]]
+
+# Error: Matrix not list of lists
+>>> matrix_divided([1, 2, 3], 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Error: Rows different sizes
+>>> matrix_divided([[1, 2], [3]], 2)
+Traceback (most recent call last):
+TypeError: Each row of the matrix must have the same size
+
+# Error: Non-number in matrix
+>>> matrix_divided([[1, "two"], [3, 4]], 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Error: Div not number
+>>> matrix_divided([[1, 2]], "3")
+Traceback (most recent call last):
+TypeError: div must be a number
+
+# Error: Div by 0
+>>> matrix_divided([[1, 2]], 0)
+Traceback (most recent call last):
+ZeroDivisionError: division by zero
+
+# Div by negative
+>>> matrix_divided([[1, 2]], -2)
+[[-0.5, -1.0]]
+
+# Rounding to 2 decimals
+>>> matrix_divided([[1, 2, 3]], 3)
+[[0.33, 0.67, 1.0]]
