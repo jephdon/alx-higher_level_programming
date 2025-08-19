@@ -1,0 +1,47 @@
+>>> MyList = __import__('1-my_list').MyList
+
+# Basic usage with append
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list.append(5)
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+
+# Sorted list remains unchanged
+>>> my_list = MyList([5, 4, 3, 2, 1])
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+>>> print(my_list)
+[5, 4, 3, 2, 1]
+
+# Empty list
+>>> my_list = MyList()
+>>> my_list.print_sorted()
+[]
+
+# Single element
+>>> my_list = MyList([42])
+>>> my_list.print_sorted()
+[42]
+
+# Duplicates
+>>> my_list = MyList([1, 3, 2, 1, 3])
+>>> my_list.print_sorted()
+[1, 1, 2, 3, 3]
+
+# Negative numbers
+>>> my_list = MyList([-5, -3, -4])
+>>> my_list.print_sorted()
+[-5, -4, -3]
+
+# Mixed numbers
+>>> my_list = MyList([0, -1, 5, -10, 3])
+>>> my_list.print_sorted()
+[-10, -1, 0, 3, 5]
