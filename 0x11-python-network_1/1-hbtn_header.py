@@ -10,8 +10,9 @@ import sys
 def fetch_header(url):
     """Fetches the X-Request-Id header from a given URL.
 
-    Sends a request to the provided URL using urllib, follows redirects,
-    and prints the value of the X-Request-Id header in the response.
+    Sends a GET request to the URL using urllib, follows
+    redirects, and prints
+    the value of the X-Request-Id header if present.
 
     Args:
         url (str): The URL to send the request to.
@@ -19,12 +20,10 @@ def fetch_header(url):
     Returns:
         None
     """
-    # Create an opener to handle redirects
-    opener = urllib.request.build_opener(urllib.request.HTTPRedirectHandler)
-    request = urllib.request.Request(url)
-    with opener.open(request) as response:
+    with urllib.request.urlopen(url) as response:
         header_value = response.getheader('X-Request-Id')
-        print(header_value)
+        if header_value is not None:
+            print(header_value)
 
 
 if __name__ == "__main__":
